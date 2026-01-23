@@ -179,4 +179,91 @@ const worshipData = {
   <section class="section">
     <h3 class="section-title serif">1️⃣ 오늘의 말씀 읽기</h3>
     <div class="section-body">
-      <
+      <div class="summary" id="title"></div>
+      <div id="intro"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">2️⃣ 원문 단어 묵상</h3>
+    <div class="section-body" id="original-word"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">3️⃣ 복음주의 신학적 해석</h3>
+    <div class="section-body" id="theology"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">4️⃣ 관련 예화</h3>
+    <div class="section-body" id="illustration"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">5️⃣ 오늘의 명언</h3>
+    <div class="section-body" id="quote"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">6️⃣ 질문과 다짐</h3>
+    <div class="section-body" id="questions"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">7️⃣ 마무리 기도</h3>
+    <div class="section-body" id="prayer"></div>
+  </section>
+
+  <footer class="footer">
+    "하나님의 말씀이 우리 가정의 빛이 됩니다." – <span id="footer-church"></span>
+  </footer>
+</article>
+
+<!-- ================== 데이터 바인딩 ================== -->
+<script>
+document.getElementById("denomination").innerText = worshipData.church.denomination;
+document.getElementById("church-name").innerText =
+  `${worshipData.church.name} 가정 예배`;
+document.getElementById("meta-info").innerText =
+  `${worshipData.meta.date} | ${worshipData.meta.passage}`;
+
+document.getElementById("title").innerText =
+  `제목: ${worshipData.meta.title}`;
+
+document.getElementById("intro").innerText =
+  worshipData.sections.intro;
+
+document.getElementById("original-word").innerHTML = `
+<strong>${worshipData.sections.originalWord.word}</strong><br/>
+(${worshipData.sections.originalWord.meaning})<br/><br/>
+${worshipData.sections.originalWord.meditation}
+`;
+
+document.getElementById("theology").innerText =
+  worshipData.sections.theology;
+
+document.getElementById("illustration").innerText =
+  worshipData.sections.illustration;
+
+document.getElementById("quote").innerHTML = `
+<strong>"${worshipData.sections.quote.text}"</strong><br/>
+- ${worshipData.sections.quote.author}
+`;
+
+document.getElementById("questions").innerHTML = `
+<strong>나눔 질문</strong><br/>
+${worshipData.sections.questions.map(q => `• ${q}`).join("<br/>")}
+<br/><br/>
+<strong>오늘의 다짐</strong><br/>
+${worshipData.sections.resolution}
+`;
+
+document.getElementById("prayer").innerText =
+  worshipData.sections.prayer;
+
+document.getElementById("footer-church").innerText =
+  worshipData.church.name;
+</script>
+
+</body>
+</html>
