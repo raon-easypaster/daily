@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>가정예배서 템플릿</title>
+  <title>라온동행교회 가정예배</title>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,9 +16,7 @@
       background: #f8fafc;
       padding: 20px;
     }
-    .serif {
-      font-family: 'Noto Serif KR', serif;
-    }
+    .serif { font-family: 'Noto Serif KR', serif; }
     .worship-card {
       background: white;
       border-radius: 1.5rem;
@@ -83,105 +81,70 @@
       font-size: 0.75rem;
       margin-top: 2rem;
     }
-    @media print {
-      body { background: white; padding: 0; }
-      .worship-card {
-        box-shadow: none;
-        border: 1px solid #e5e7eb;
-        margin: 0;
-        page-break-after: always;
-      }
-    }
   </style>
+
+  <!-- ✅ 데이터 + 바인딩 (단 하나!) -->
+  <script defer>
+    const worshipData = {
+      church: {
+        denomination: "기독교 대한성결교회",
+        name: "라온동행교회"
+      },
+      meta: {
+        date: "2026년 1월 21일 수요일",
+        passage: "창세기 14장",
+        title: "승리의 주권자와 영원한 제사장"
+      },
+      sections: {
+        intro: "본문 내용...",
+        originalWord: {
+          word: "מַעֲשֵׂר (마아세르)",
+          meaning: "십일조",
+          meditation: "묵상 내용..."
+        },
+        theology: "신학적 해석...",
+        illustration: "예화...",
+        quote: {
+          text: "명언 내용",
+          author: "매튜 헨리"
+        },
+        questions: ["질문 1", "질문 2"],
+        resolution: "오늘의 다짐",
+        prayer: "기도문"
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("denomination").textContent = worshipData.church.denomination;
+      document.getElementById("church-name").textContent = worshipData.church.name + " 가정 예배";
+      document.getElementById("meta-info").textContent =
+        `${worshipData.meta.date} | ${worshipData.meta.passage}`;
+      document.getElementById("title").textContent =
+        `제목: ${worshipData.meta.title}`;
+      document.getElementById("intro").textContent = worshipData.sections.intro;
+      document.getElementById("original-word").innerHTML = `
+        <strong>${worshipData.sections.originalWord.word}</strong><br/>
+        (${worshipData.sections.originalWord.meaning})<br/><br/>
+        ${worshipData.sections.originalWord.meditation}
+      `;
+      document.getElementById("theology").textContent = worshipData.sections.theology;
+      document.getElementById("illustration").textContent = worshipData.sections.illustration;
+      document.getElementById("quote").innerHTML = `
+        "${worshipData.sections.quote.text}"<br/>- ${worshipData.sections.quote.author}
+      `;
+      document.getElementById("questions").innerHTML = `
+        <strong>나눔 질문</strong><br/>
+        ${worshipData.sections.questions.map(q => `• ${q}`).join("<br/>")}
+        <br/><br/><strong>오늘의 다짐</strong><br/>
+        ${worshipData.sections.resolution}
+      `;
+      document.getElementById("prayer").textContent = worshipData.sections.prayer;
+      document.getElementById("footer-church").textContent = worshipData.church.name;
+    });
+  </script>
 </head>
 
 <body>
-
-<!-- ================== 변동 데이터 ================== -->
-<script defer>
-const worshipData = {
-  church: {
-    denomination: "기독교 대한성결교회",
-    name: "라온동행교회"
-  },
-  meta: {
-    date: "2026년 1월 21일 수요일",
-    passage: "창세기 14장",
-    title: "승리의 주권자와 영원한 제사장"
-  },
-  sections: {
-    intro: "본문 내용...",
-    originalWord: {
-      word: "מַעֲשֵׂר (마아세르)",
-      meaning: "십일조",
-      meditation: "묵상 내용..."
-    },
-    theology: "신학적 해석...",
-    illustration: "예화...",
-    quote: {
-      text: "명언 내용",
-      author: "매튜 헨리"
-    },
-    questions: [
-      "질문 1",
-      "질문 2"
-    ],
-    resolution: "오늘의 다짐",
-    prayer: "기도문"
-  }
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("denomination").textContent =
-    worshipData.church.denomination;
-
-  document.getElementById("church-name").textContent =
-    worshipData.church.name + " 가정 예배";
-
-  document.getElementById("meta-info").textContent =
-    `${worshipData.meta.date} | ${worshipData.meta.passage}`;
-
-  document.getElementById("title").textContent =
-    `제목: ${worshipData.meta.title}`;
-
-  document.getElementById("intro").textContent =
-    worshipData.sections.intro;
-
-  document.getElementById("original-word").innerHTML = `
-    <strong>${worshipData.sections.originalWord.word}</strong><br/>
-    (${worshipData.sections.originalWord.meaning})<br/><br/>
-    ${worshipData.sections.originalWord.meditation}
-  `;
-
-  document.getElementById("theology").textContent =
-    worshipData.sections.theology;
-
-  document.getElementById("illustration").textContent =
-    worshipData.sections.illustration;
-
-  document.getElementById("quote").innerHTML = `
-    "<strong>${worshipData.sections.quote.text}</strong>"<br/>
-    - ${worshipData.sections.quote.author}
-  `;
-
-  document.getElementById("questions").innerHTML = `
-    <strong>나눔 질문</strong><br/>
-    ${worshipData.sections.questions.map(q => `• ${q}`).join("<br/>")}
-    <br/><br/>
-    <strong>오늘의 다짐</strong><br/>
-    ${worshipData.sections.resolution}
-  `;
-
-  document.getElementById("prayer").textContent =
-    worshipData.sections.prayer;
-
-  document.getElementById("footer-church").textContent =
-    worshipData.church.name;
-});
-</script>
-
-
-<!-- ================== 출력 템플릿 ================== -->
 <article class="worship-card">
   <header class="guide-header">
     <div class="church-tag" id="denomination"></div>
@@ -231,52 +194,5 @@ document.addEventListener("DOMContentLoaded", () => {
     "하나님의 말씀이 우리 가정의 빛이 됩니다." – <span id="footer-church"></span>
   </footer>
 </article>
-
-<!-- ================== 데이터 바인딩 ================== -->
-<script>
-document.getElementById("denomination").innerText = worshipData.church.denomination;
-document.getElementById("church-name").innerText =
-  `${worshipData.church.name} 가정 예배`;
-document.getElementById("meta-info").innerText =
-  `${worshipData.meta.date} | ${worshipData.meta.passage}`;
-
-document.getElementById("title").innerText =
-  `제목: ${worshipData.meta.title}`;
-
-document.getElementById("intro").innerText =
-  worshipData.sections.intro;
-
-document.getElementById("original-word").innerHTML = `
-<strong>${worshipData.sections.originalWord.word}</strong><br/>
-(${worshipData.sections.originalWord.meaning})<br/><br/>
-${worshipData.sections.originalWord.meditation}
-`;
-
-document.getElementById("theology").innerText =
-  worshipData.sections.theology;
-
-document.getElementById("illustration").innerText =
-  worshipData.sections.illustration;
-
-document.getElementById("quote").innerHTML = `
-<strong>"${worshipData.sections.quote.text}"</strong><br/>
-- ${worshipData.sections.quote.author}
-`;
-
-document.getElementById("questions").innerHTML = `
-<strong>나눔 질문</strong><br/>
-${worshipData.sections.questions.map(q => `• ${q}`).join("<br/>")}
-<br/><br/>
-<strong>오늘의 다짐</strong><br/>
-${worshipData.sections.resolution}
-`;
-
-document.getElementById("prayer").innerText =
-  worshipData.sections.prayer;
-
-document.getElementById("footer-church").innerText =
-  worshipData.church.name;
-</script>
-
 </body>
 </html>
