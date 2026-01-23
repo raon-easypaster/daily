@@ -1,90 +1,226 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>라온동행교회 가정예배서</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Pretendard:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Pretendard', sans-serif; background: #f8fafc; padding: 20px; }
-        .serif { font-family: 'Noto+Serif+KR', serif; }
-        @media print {
-            .worship-card { page-break-after: always; box-shadow: none !important; border: 1px solid #eee !important; margin: 0 !important; }
-            body { background: white; padding: 0; }
-        }
-        .worship-card { background: white; border-radius: 1.5rem; padding: 3rem; margin: 2rem auto; max-width: 800px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #f1f5f9; }
-        .guide-header { text-align: center; border-bottom: 2px double #e2e8f0; padding-bottom: 2rem; margin-bottom: 2rem; }
-        .church-tag { color: #065f46; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 0.5rem; }
-        .church-title { font-size: 1.875rem; font-weight: 700; color: #0f172a; margin-bottom: 0.25rem; }
-        .guide-info { color: #64748b; font-size: 0.875rem; font-weight: 500; }
-        .section { margin-bottom: 2.5rem; }
-        .section-title { font-size: 1.25rem; font-weight: 700; color: #0f172a; border-left: 4px solid #047857; padding-left: 1.25rem; margin-bottom: 1.5rem; }
-        .section-body { white-space: pre-wrap; font-size: 1.125rem; color: #1e293b; line-height: 1.625; }
-        .footer { text-align: center; padding-top: 1.5rem; border-top: 1px solid #f1f5f9; color: #94a3b8; font-size: 0.75rem; margin-top: 2rem; }
-        .summary { background: #f8fafc; padding: 1rem; border-radius: 0.75rem; font-weight: 600; font-style: italic; margin-bottom: 1rem; }
-    </style>
+  <meta charset="UTF-8">
+  <title>라온동행교회 가정예배서</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Pretendard:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: #f8fafc;
+      padding: 20px;
+    }
+    .serif { font-family: 'Noto Serif KR', serif; }
+
+    .worship-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 3rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f1f5f9;
+    }
+
+    .guide-header {
+      text-align: center;
+      border-bottom: 2px double #e2e8f0;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .church-tag {
+      color: #065f46;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+    }
+
+    .church-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+
+    .guide-info {
+      color: #64748b;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      border-left: 4px solid #047857;
+      padding-left: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body {
+      font-size: 1.125rem;
+      color: #1e293b;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .section-body p {
+      margin-bottom: 1rem;
+    }
+
+    .summary {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f1f5f9;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .worship-card {
+        box-shadow: none !important;
+        border: 1px solid #eee !important;
+        margin: 0 !important;
+        page-break-after: always;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    
-    <article class="worship-card">
-        <div class="guide-header">
-            <div class="church-tag">기독교 대한성결교회</div>
-            <h2 class="church-title serif">라온동행교회 가정 예배</h2>
-            <div class="guide-info">2026년 1월 22일 목요일 | 창세기 15장</div>
-        </div>
-        <div class="guide-content">
-            
-                <div class="section">
-                    <h3 class="section-title serif">**라온동행교회 가정예배서**</h3>
-                    <div class="section-body"><div class="summary">**날짜: 2026년 1월 22일 목요일**
-**본문: 창세기 15장**</div><div class="summary">---</div></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">1️⃣ 오늘의 말씀 읽기</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">**제목: 두려움을 이기는 언약의 별빛**</p><p style="margin-bottom: 1rem;">오늘 읽을 창세기 15장은 하나님께서 자녀가 없어 낙심한 아브람에게 나타나 하늘의 별과 같은 자손을 약속하시고, 쪼갠 고기 사이로 지나가시는 횃불 언약을 통해 그 약속을 반드시 이루실 것을 확증하시는 장면입니다. 아브람은 이 약속을 믿음으로 의롭다 함을 얻었습니다. 오늘의 본문을 경건한 마음으로 통독하시기를 권면합니다.</p><p style="margin-bottom: 1rem;">---</p></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">2️⃣ 원문 단어 묵상 (Original Word Meditation)</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">**[אמן] (아만) - 기본 뜻: 확신하다, 신뢰하다, 견고히 붙들다**</p><p style="margin-bottom: 1rem;">창세기 15장 6절에서 "아브람이 여호와를 믿으니"라고 할 때 사용된 단어입니다. 이 단어는 우리가 기도 끝에 사용하는 '아멘'의 어원이기도 합니다. 이는 단순히 지적인 동의를 넘어, 흔들리는 배가 닻을 내리듯 자신의 전 존재를 하나님의 신실하심 위에 견고히 고정시키는 것을 의미합니다. 하나님은 우리의 어떠함이 아니라, 오직 그분을 '아만'하는 믿음을 보시고 우리를 의롭다 하십니다.</p><p style="margin-bottom: 1rem;">---</p></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">3️⃣ 복음주의 신학적 해석</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">창세기 15장은 성경 전체를 관통하는 '이신칭의(以信稱義)' 교리의 초석입니다. 아브람이 행위나 할례가 아닌 오직 하나님의 약속을 믿음으로 의롭다 함을 얻은 사건은, 훗날 우리 주 예수 그리스도를 믿음으로 구원받는 모든 성도의 모형이 됩니다. </p><p style="margin-bottom: 1rem;">특히 쪼갠 고기 사이로 타오르는 횃불이 홀로 지나가는 장면은 구속사적으로 매우 중요합니다. 본래 언약은 양측이 함께 지나가며 어길 시 죽음을 담보하는 것이나, 하나님께서는 아브람을 잠재우시고 홀로 그 사이를 지나가셨습니다. 이는 인간의 연약함으로 언약이 파기될지라도, 하나님께서 친히 자기 아들을 제물로 삼아 그 책임을 대신 지시겠다는 십자가의 은혜와 무조건적인 사랑을 예표합니다. 성결교회의 사중복음 중 '중생'의 은혜는 바로 이 전적인 하나님의 주권과 인간의 믿음이 만나는 지점에서 시작됩니다.</p><p style="margin-bottom: 1rem;">---</p></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">4️⃣ 관련 예화</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">고대 근동의 언약 체결 방식은 매우 엄격했습니다. 계약 당사자들은 짐승을 반으로 쪼개어 마주 보게 두고 그 사이를 함께 걸어갔습니다. "만약 우리가 이 약속을 어기면 이 짐승처럼 죽임을 당할 것이다"라는 생명을 건 맹세였습니다. </p><p style="margin-bottom: 1rem;">어느 선교사님이 아프리카의 한 부족에게 이 본문을 설명할 때, 부족장은 깜짝 놀라며 물었습니다. "왜 하나님 혼자 지나가셨습니까? 그것은 인간이 어긴 죄의 대가까지 하나님이 다 받으시겠다는 뜻 아닙니까?" 그렇습니다. 하나님은 아브람이 실패할 것을 아셨기에, 그 실패의 비용을 당신의 독생자 예수 그리스도의 생명으로 지불하기로 작정하셨습니다. 이것이 우리가 누리는 복음의 신비입니다.</p><p style="margin-bottom: 1rem;">---</p></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">5️⃣ 오늘의 명언</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">"믿음은 우리가 하나님을 위해 무엇을 하는 것이 아니라, 하나님께서 우리를 위해 행하신 일을 받아들이는 손이다."
-- **마틴 루터 (Martin Luther)**</p><p style="margin-bottom: 1rem;">*해설: 루터는 구원이 인간의 공로가 아닌 오직 하나님의 은혜에 대한 반응임을 강조했습니다. 아브람이 별을 바라보며 하나님의 약속을 받아들였을 때 의로워졌듯이, 우리도 그리스도의 공로를 믿음의 손으로 붙잡을 때 거룩한 자녀로 인정받습니다.*</p><p style="margin-bottom: 1rem;">---</p></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">6️⃣ 오늘을 위한 질문과 다짐</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">**나눔 질문**
-1. 현재 나의 삶에서 아브람처럼 '자녀가 없음'이나 '미래의 불확실함' 때문에 두려워하고 있는 영역은 무엇입니까?
-2. 하나님께서 나에게 주신 '언약의 말씀' 중 끝까지 붙들어야 할 약속은 무엇입니까?</p><p style="margin-bottom: 1rem;">**오늘의 다짐**
-"상황의 어두움을 보지 않고 약속의 별빛을 바라보며, 오늘도 신실하신 하나님만을 신뢰하며 걷겠습니다."</p><p style="margin-bottom: 1rem;">---</p></div>
-                </div>
-                
-                <div class="section">
-                    <h3 class="section-title serif">7️⃣ 마무리 기도</h3>
-                    <div class="section-body"><p style="margin-bottom: 1rem;">신실하신 언약의 하나님, 오늘 창세기 15장의 말씀을 통해 우리의 믿음을 다시 세워주시니 감사합니다. 아브람이 보이지 않는 미래 앞에서도 하나님의 약속을 믿었을 때 그를 의롭다 하신 것처럼, 우리 또한 오직 예수 그리스도의 보혈을 의지함으로 하나님 앞에 서게 하옵소서. </p><p style="margin-bottom: 1rem;">때로 삶의 고난이 쪼갠 고기처럼 처참해 보일지라도, 그 사이를 지나가시며 반드시 구원을 이루시는 하나님의 횃불을 보게 하옵소서. 우리 라온동행교회 모든 성도의 가정이 세상의 계산이 아닌 하나님의 약속 위에 세워지게 하시고, 다시 오실 주님을 기다리는 재림의 소망으로 오늘을 이기게 하옵소서. 우리를 의롭다 하신 예수 그리스도의 이름으로 기도드립니다. 아멘.</p></div>
-                </div>
-                
-        </div>
-        <div class="footer">
-            "하나님의 말씀이 우리 가정의 빛이 됩니다." - 라온동행교회
-        </div>
-    </article>
-    
+
+<article class="worship-card">
+  <header class="guide-header">
+    <div class="church-tag">기독교 대한성결교회</div>
+    <h2 class="church-title serif">라온동행교회 가정 예배</h2>
+    <div class="guide-info">2026년 1월 22일 목요일 | 창세기 15장</div>
+  </header>
+
+  <section class="section">
+    <h3 class="section-title serif">라온동행교회 가정예배서</h3>
+    <div class="summary">
+      날짜: 2026년 1월 22일 목요일<br>
+      본문: 창세기 15장
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">1️⃣ 오늘의 말씀 읽기</h3>
+    <div class="section-body">
+      <p><strong>제목: 두려움을 이기는 언약의 별빛</strong></p>
+      <p>
+        오늘 읽을 창세기 15장은 하나님께서 자녀가 없어 낙심한 아브람에게 나타나
+        하늘의 별과 같은 자손을 약속하시고, 쪼갠 고기 사이로 지나가시는 횃불 언약을 통해
+        그 약속을 반드시 이루실 것을 확증하시는 장면입니다.
+      </p>
+      <p>
+        아브람은 이 약속을 믿음으로 의롭다 함을 얻었습니다.
+        오늘의 본문을 경건한 마음으로 통독하시기를 권면합니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">2️⃣ 원문 단어 묵상</h3>
+    <div class="section-body">
+      <p><strong>[אמן] (아만) – 확신하다, 신뢰하다, 견고히 붙들다</strong></p>
+      <p>
+        창세기 15장 6절에서 “아브람이 여호와를 믿으니”라는 표현에 사용된 단어입니다.
+        이는 우리가 기도 끝에 사용하는 ‘아멘’의 어원이기도 합니다.
+      </p>
+      <p>
+        단순한 지적 동의가 아니라, 자신의 전 존재를 하나님의 신실하심 위에
+        닻 내리듯 고정시키는 믿음을 의미합니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">3️⃣ 복음주의 신학적 해석</h3>
+    <div class="section-body">
+      <p>
+        창세기 15장은 ‘이신칭의’ 교리의 초석입니다.
+        아브람은 행위가 아닌 믿음으로 의롭다 함을 얻었습니다.
+      </p>
+      <p>
+        횃불이 홀로 쪼갠 고기 사이를 지나간 사건은,
+        언약의 책임을 하나님께서 전적으로 짊어지시겠다는
+        십자가 은혜의 예표입니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">4️⃣ 관련 예화</h3>
+    <div class="section-body">
+      <p>
+        고대 언약은 생명을 담보로 체결되었습니다.
+        하나님께서 홀로 언약 사이를 지나가셨다는 것은,
+        인간의 실패까지도 하나님이 책임지시겠다는 선언이었습니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">5️⃣ 오늘의 명언</h3>
+    <div class="section-body">
+      <p>
+        “믿음은 우리가 하나님을 위해 무엇을 하는 것이 아니라,
+        하나님께서 우리를 위해 행하신 일을 받아들이는 손이다.”<br>
+        – <strong>마틴 루터</strong>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">6️⃣ 오늘을 위한 질문과 다짐</h3>
+    <div class="section-body">
+      <p><strong>나눔 질문</strong></p>
+      <p>
+        1. 현재 나의 삶에서 두려워하고 있는 영역은 무엇입니까?<br>
+        2. 끝까지 붙들어야 할 하나님의 언약은 무엇입니까?
+      </p>
+      <p>
+        <strong>오늘의 다짐</strong><br>
+        “약속의 별빛을 바라보며 신실하신 하나님만을 신뢰하겠습니다.”
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title serif">7️⃣ 마무리 기도</h3>
+    <div class="section-body">
+      <p>
+        언약의 하나님, 우리의 믿음을 새롭게 하시니 감사합니다.
+        오직 예수 그리스도의 공로를 의지하며 살아가게 하옵소서.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    “하나님의 말씀이 우리 가정의 빛이 됩니다.” – 라온동행교회
+  </footer>
+</article>
+
 </body>
 </html>
