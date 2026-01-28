@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = 'bible';
-const OUTPUT = 'data/bibleData.js';
+const OUTPUT = 'daily/data/bibleData.js';
+
 
 const results = [];
 
