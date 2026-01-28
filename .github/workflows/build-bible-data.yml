@@ -1,0 +1,41 @@
+name: Build Bible Data
+
+on:
+  push:
+    paths:
+      - 'bible/**/*.html'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate bibleData.js
+        run: |
+          echo "const BIBLE_DATA = [" > data/bibleData.js
+
+          find bible -name "*.html" | sort | while read file; do
+            filename=$(basename "$file")
+            date=$(echo "$filename" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' || echo "")
+            
+            title=$(grep -m1 "<title>" "$file" | sed -E 's/.*<title>(.*)<\/title>.*/\1/' || echo "")
+            title=${title:-"가정예배"}
+
+            scripture=$(grep -m1 "data-scripture" "$file" | sed -E 's/.*data-scripture=\"([^\"]+)\".*/\1/' || echo "")
+            scripture=${scripture:-"성경본문"}
+
+            echo "  {date:'$date', scripture:'$scripture', title:'$title', link:'$file'}," >> data/bibleData.js
+          done
+
+          echo "];" >> data/bibleData.js
+
+      - name: Commit generated data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/bibleData.js
+          git commit -m "auto: update bibleData.js" || echo "No changes"
+          git push
