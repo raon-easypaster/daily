@@ -1,385 +1,210 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>라온동행교회 가정예배 아카이브</title>
-    <!-- Google Fonts: 고운 바탕 (명조 계열) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* 1. 기본 설정 (Reset & Variables) */
-        :root {
-            --primary-color: #6A1B9A;   /* 진한 보라색 (텍스트 강조) */
-            --accent-color: #AB47BC;    /* 중간 보라색 (아이콘 등) */
-            --bg-color: #F3E5F5;        /* 아주 연한 라벤더 배경 */
-            --card-bg: #FFFFFF;         /* 카드 배경 */
-            --text-main: #333333;       /* 기본 텍스트 */
-            --text-sub: #666666;        /* 보조 텍스트 */
-            --shadow-soft: 0 4px 20px rgba(106, 27, 154, 0.1); /* 부드러운 그림자 */
-            --radius: 16px;             /* 둥근 모서리 */
-            --new-badge-color: #FF7043; /* NEW 배지 색상 (주황) */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>라온동행교회 가정예배 아카이브</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Gowun Batang', serif; /* 명조체 스타일 */
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+<style>
+:root {
+    --primary-color:#6A1B9A;
+    --accent-color:#AB47BC;
+    --bg-color:#F3E5F5;
+    --card-bg:#fff;
+    --text-main:#333;
+    --text-sub:#666;
+    --shadow-soft:0 4px 20px rgba(106,27,154,.1);
+    --radius:16px;
+    --new-badge:#FF7043;
+}
 
-        /* 2. 레이아웃 & 헤더 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+*{box-sizing:border-box;margin:0;padding:0}
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+body{
+    font-family:'Gowun Batang',serif;
+    background:var(--bg-color);
+    color:var(--text-main);
+}
 
-        .church-name {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
 
-        .main-title {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
+header{text-align:center;margin-bottom:40px}
+.church-name{color:var(--accent-color);font-weight:700}
+.main-title{font-size:2.5rem;color:var(--primary-color)}
+.sub-title{color:var(--text-sub)}
 
-        .sub-title {
-            color: var(--text-sub);
-            font-size: 1rem;
-        }
+.search-container{
+    max-width:600px;
+    margin:0 auto 50px;
+}
+.search-input{
+    width:100%;
+    padding:16px 24px;
+    font-size:1.1rem;
+    border-radius:50px;
+    border:none;
+    box-shadow:var(--shadow-soft);
+}
 
-        /* 3. 검색창 디자인 (핵심 추가 기능) */
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 50px auto; /* 중앙 정렬 및 아래 여백 */
-            position: relative;
-        }
+.worship-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:24px;
+}
 
-        .search-input {
-            width: 100%;
-            padding: 16px 24px; /* 넉넉한 터치 영역 */
-            font-size: 1.1rem;
-            font-family: 'Gowun Batang', serif;
-            border: 2px solid transparent;
-            border-radius: 50px; /* 완전 둥근 형태 */
-            background-color: white;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            outline: none;
-            color: var(--text-main);
-        }
+.card{
+    background:var(--card-bg);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:var(--shadow-soft);
+    text-decoration:none;
+    color:inherit;
+    position:relative;
+    transition:.3s;
+}
+.card:hover{transform:translateY(-5px)}
 
-        .search-input::placeholder {
-            color: #BDBDBD;
-        }
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:4px;
+    background:linear-gradient(to right,#E1BEE7,#BA68C8);
+}
 
-        /* 포커스 시 보라색 테두리와 그림자 강조 */
-        .search-input:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 4px 25px rgba(171, 71, 188, 0.25);
-            transform: translateY(-2px);
-        }
+.card-date{
+    font-size:.9rem;
+    color:var(--text-sub);
+    display:flex;
+    gap:6px;
+    align-items:center;
+}
+.card-date::before{content:'📅'}
 
-        /* 4. 그리드 레이아웃 (반응형) */
-        .worship-grid {
-            display: grid;
-            gap: 24px;
-            /* 기본적으로 화면 꽉 차게, 최소 280px 유지하며 자동 채움 */
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        }
+.new-badge{
+    margin-left:auto;
+    background:var(--new-badge);
+    color:#fff;
+    font-size:.7rem;
+    padding:2px 8px;
+    border-radius:10px;
+    font-weight:700;
+}
 
-        /* 5. 카드 디자인 */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow-soft);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: relative;
-            overflow: hidden;
-            
-            /* 링크 태그(a) 스타일 리셋 및 커서 설정 */
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
+.card-scripture{
+    margin:10px 0;
+    color:var(--accent-color);
+    font-weight:700;
+    background:#F3E5F5;
+    padding:4px 12px;
+    border-radius:20px;
+    display:inline-block;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(106, 27, 154, 0.15);
-        }
+.card-topic{
+    font-size:1.3rem;
+    font-weight:700;
+}
 
-        /* 장식용 보라색 상단 라인 */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #E1BEE7, #BA68C8);
-        }
-
-        .card-date {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* 날짜 아이콘 효과 */
-        .card-date::before {
-            content: '📅';
-            font-size: 0.8rem;
-        }
-
-        /* NEW 배지 스타일 (추가됨) */
-        .new-badge {
-            background-color: var(--new-badge-color);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: auto; /* 날짜 옆, 오른쪽 끝으로 밀기 */
-            display: inline-block;
-            animation: pulse 2s infinite; /* 깜빡이는 효과 */
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        .card-scripture {
-            font-size: 0.95rem;
-            color: var(--accent-color);
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: inline-block;
-            background-color: #F3E5F5;
-            padding: 4px 12px;
-            border-radius: 20px;
-            align-self: flex-start; /* 왼쪽 정렬 */
-        }
-
-        .card-topic {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-top: 4px;
-            line-height: 1.4;
-            word-break: keep-all; /* 단어 단위 줄바꿈 */
-        }
-
-        /* 6. 검색 결과 없음 메시지 */
-        .no-result {
-            text-align: center;
-            grid-column: 1 / -1; /* 전체 행 차지 */
-            padding: 60px 0;
-            color: var(--text-sub);
-            font-size: 1.1rem;
-            display: none; /* 기본 숨김 */
-        }
-
-        .no-result span {
-            display: block;
-            font-size: 3rem;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-
-        /* 7. 반응형 미디어 쿼리 */
-        /* 모바일 (1단) - 그리드 설정상 이미 자동 적용되지만 확실하게 제어 */
-        @media (max-width: 600px) {
-            .main-title {
-                font-size: 1.8rem;
-            }
-            .container {
-                padding: 30px 16px;
-            }
-            /* 모바일에서는 카드가 1열로 보이도록 */
-            .worship-grid {
-                grid-template-columns: 1fr; 
-            }
-        }
-    </style>
+.no-result{
+    display:none;
+    text-align:center;
+    padding:60px;
+    color:var(--text-sub);
+}
+</style>
 </head>
+
 <body>
+<div class="container">
+<header>
+    <p class="church-name">기독교 대한성결교회 라온동행교회</p>
+    <h1 class="main-title">가정예배 아카이브</h1>
+    <p class="sub-title">말씀과 동행하는 매일의 은혜</p>
+</header>
 
-    <div class="container">
-        <!-- 헤더 섹션 -->
-        <header>
-            <p class="church-name">기독교 대한성결교회 라온동행교회</p>
-            <h1 class="main-title">가정예배 아카이브</h1>
-            <p class="sub-title">말씀과 동행하는 매일의 은혜</p>
-        </header>
+<div class="search-container">
+<input id="searchInput" class="search-input" placeholder="날짜, 본문, 주제를 검색하세요">
+</div>
 
-        <!-- 검색 섹션 (NEW) -->
-        <section class="search-container">
-            <input 
-                type="text" 
-                id="searchInput" 
-                class="search-input" 
-                placeholder="날짜, 본문, 주제를 검색해보세요... (예: 창세기, 1월)"
-                autocomplete="off"
-            >
-        </section>
+<main>
+<div id="worshipList" class="worship-grid"></div>
+<div id="noResult" class="no-result">🍃 검색 결과가 없습니다</div>
+</main>
+</div>
 
-        <!-- 리스트 섹션 -->
-        <main>
-            <div id="worshipList" class="worship-grid">
-                <!-- 자바스크립트로 카드가 여기에 생성됩니다 -->
-            </div>
-            
-            <!-- 검색 결과 없음 안내 -->
-            <div id="noResult" class="no-result">
-                <span>🍃</span>
-                검색 결과가 없습니다.<br>
-                다른 검색어를 입력해보세요.
-            </div>
-        </main>
-    </div>
+<script>
+/* ===== 설정 ===== */
+const NEW_DAYS = 3; // 최근 N일 NEW 표시
 
-    <script>
-        /**
-         * 데이터셋: 가정예배 데이터 배열 (창세기 1장 ~ 13장)
-         * link 속성: 깃허브 폴더 구조에 맞춘 상대 경로
-         * isNew: true 설정 시 카드에 'NEW' 배지 표시
-         * 날짜 수정: 2026.01.02(금) 시작 ~ 2026.01.20(화) 끝 (주말 제외)
-         */
+/* ===== 데이터 ===== */
 const worshipData = [
-    { id: 1, date: "2026.01.02(금)", scripture: "창세기 1장", topic: "천지창조의 시작", link: "bible/genesis/genesis1.html" },
-    { id: 2, date: "2026.01.05(월)", scripture: "창세기 2장", topic: "에덴동산과 안식일", link: "bible/genesis/genesis2.html" },
-    { id: 3, date: "2026.01.06(화)", scripture: "창세기 3장", topic: "인간의 타락과 약속", link: "bible/genesis/genesis3.html" },
-    { id: 4, date: "2026.01.07(수)", scripture: "창세기 4장", topic: "가인과 아벨", link: "bible/genesis/genesis4.html" },
-    { id: 5, date: "2026.01.08(목)", scripture: "창세기 5장", topic: "아담의 족보", link: "bible/genesis/genesis5.html" },
-    { id: 6, date: "2026.01.09(금)", scripture: "창세기 6장", topic: "노아와 홍수의 예고", link: "bible/genesis/genesis6.html" },
-    { id: 7, date: "2026.01.12(월)", scripture: "창세기 7장", topic: "홍수의 심판", link: "bible/genesis/genesis7.html" },
-    { id: 8, date: "2026.01.13(화)", scripture: "창세기 8장", topic: "새로운 시작", link: "bible/genesis/genesis8.html" },
-    { id: 9, date: "2026.01.14(수)", scripture: "창세기 9장", topic: "무지개 언약", link: "bible/genesis/genesis9.html" },
-    { id: 10, date: "2026.01.15(목)", scripture: "창세기 10장", topic: "노아 아들들의 족보", link: "bible/genesis/genesis10.html" },
-    { id: 11, date: "2026.01.16(금)", scripture: "창세기 11장", topic: "바벨탑 사건", link: "bible/genesis/genesis11.html" },
-    { id: 12, date: "2026.01.19(월)", scripture: "창세기 12장", topic: "아브람을 부르심", link: "bible/genesis/genesis12.html" },
-    { id: 13, date: "2026.01.20(화)", scripture: "창세기 13장", topic: "아브람과 롯의 분기", link: "bible/genesis/genesis13.html" },
-    { id: 14, date: "2026.01.21(수)", scripture: "창세기 14장", topic: "롯을 구한 아브라함", link: "bible/genesis/genesis14.html" },
-    { id: 15, date: "2026.01.22(목)", scripture: "창세기 15장", topic: "언약이 세워지다", link: "bible/genesis/genesis15.html" },
-    { id: 16, date: "2026.01.23(금)", scripture: "창세기 16장", topic: "하갈과 이스마엘", link: "bible/genesis/genesis16.html" },
-    { id: 17, date: "2026.01.26(월)", scripture: "창세기 17장", topic: "할례: 언약의 표징", link: "bible/genesis/genesis17.html" },
-    { id: 18, date: "2026.01.27(화)", scripture: "창세기 18장", topic: "약속의 방문", link: "bible/genesis/genesis18.html" },
-    { 
-        id: 19, 
-        date: "2026.01.28(수)", 
-        scripture: "창세기 19장", 
-        topic: "소돔과 고모라", 
-        link: "bible/genesis/genesis19.html",
-        isNew: true
-    }
+ {date:"2026-01-02", scripture:"창세기 1장", topic:"천지창조의 시작", link:"bible/genesis/genesis1.html"},
+ {date:"2026-01-05", scripture:"창세기 2장", topic:"에덴동산과 안식일", link:"bible/genesis/genesis2.html"},
+ {date:"2026-01-06", scripture:"창세기 3장", topic:"인간의 타락과 약속", link:"bible/genesis/genesis3.html"},
+ {date:"2026-01-07", scripture:"창세기 4장", topic:"가인과 아벨", link:"bible/genesis/genesis4.html"},
+ {date:"2026-01-08", scripture:"창세기 5장", topic:"아담의 족보", link:"bible/genesis/genesis5.html"},
+ {date:"2026-01-09", scripture:"창세기 6장", topic:"노아와 홍수의 예고", link:"bible/genesis/genesis6.html"},
+ {date:"2026-01-12", scripture:"창세기 7장", topic:"홍수의 심판", link:"bible/genesis/genesis7.html"},
+ {date:"2026-01-13", scripture:"창세기 8장", topic:"새로운 시작", link:"bible/genesis/genesis8.html"},
+ {date:"2026-01-14", scripture:"창세기 9장", topic:"무지개 언약", link:"bible/genesis/genesis9.html"},
+ {date:"2026-01-15", scripture:"창세기 10장", topic:"노아 아들들의 족보", link:"bible/genesis/genesis10.html"},
+ {date:"2026-01-16", scripture:"창세기 11장", topic:"바벨탑 사건", link:"bible/genesis/genesis11.html"},
+ {date:"2026-01-19", scripture:"창세기 12장", topic:"아브람을 부르심", link:"bible/genesis/genesis12.html"},
+ {date:"2026-01-20", scripture:"창세기 13장", topic:"아브람과 롯의 분기", link:"bible/genesis/genesis13.html"},
+ {date:"2026-01-21", scripture:"창세기 14장", topic:"롯을 구한 아브라함", link:"bible/genesis/genesis14.html"},
+ {date:"2026-01-22", scripture:"창세기 15장", topic:"언약이 세워지다", link:"bible/genesis/genesis15.html"},
+ {date:"2026-01-23", scripture:"창세기 16장", topic:"하갈과 이스마엘", link:"bible/genesis/genesis16.html"},
+ {date:"2026-01-26", scripture:"창세기 17장", topic:"할례: 언약의 표징", link:"bible/genesis/genesis17.html"},
+ {date:"2026-01-27", scripture:"창세기 18장", topic:"약속의 방문", link:"bible/genesis/genesis18.html"},
+ {date:"2026-01-28", scripture:"창세기 19장", topic:"소돔과 고모라", link:"bible/genesis/genesis19.html"}
 ];
+
+/* ===== 로직 ===== */
+const worshipList = document.getElementById('worshipList');
+const searchInput = document.getElementById('searchInput');
+const noResult = document.getElementById('noResult');
+
+const today = new Date();
+const isNew = d => (today - new Date(d)) / (1000*60*60*24) <= NEW_DAYS;
+
+function render(data){
+    worshipList.innerHTML='';
+    if(!data.length){noResult.style.display='block';return}
+    noResult.style.display='none';
+
+    data.forEach(item=>{
+        const a=document.createElement('a');
+        a.className='card';
+        a.href=item.link;
+        a.innerHTML=`
+        <div class="card-date">
+            ${item.date}
+            ${isNew(item.date)?'<span class="new-badge">NEW</span>':''}
+        </div>
+        <div class="card-scripture">${item.scripture}</div>
+        <div class="card-topic">${item.topic}</div>`;
+        worshipList.appendChild(a);
+    });
+}
+
+searchInput.addEventListener('input',e=>{
+    const q=e.target.value.replace(/\s/g,'').toLowerCase();
+    render(worshipData.filter(i=>
+        `${i.date}${i.scripture}${i.topic}`.replace(/\s/g,'').toLowerCase().includes(q)
+    ));
+});
+
+worshipData.sort((a,b)=>new Date(b.date)-new Date(a.date));
+render(worshipData);
 </script>
-
-        // DOM 요소 선택
-        const worshipList = document.getElementById('worshipList');
-        const searchInput = document.getElementById('searchInput');
-        const noResultMsg = document.getElementById('noResult');
-
-        /**
-         * 화면에 카드를 렌더링하는 함수
-         * @param {Array} data - 렌더링할 데이터 배열
-         */
-        function renderCards(data) {
-            // 기존 목록 초기화
-            worshipList.innerHTML = '';
-
-            // 데이터가 없을 경우 처리
-            if (data.length === 0) {
-                noResultMsg.style.display = 'block';
-                return;
-            } else {
-                noResultMsg.style.display = 'none';
-            }
-
-            // 카드 생성 및 추가
-            data.forEach(item => {
-                const card = document.createElement('a');
-                card.className = 'card';
-                card.href = item.link; 
-                
-                // NEW 배지 HTML 생성 (isNew가 true일 때만)
-                const newBadgeHtml = item.isNew ? '<span class="new-badge">NEW</span>' : '';
-
-                // HTML 구조 조립
-                card.innerHTML = `
-                    <div class="card-date">
-                        ${item.date}
-                        ${newBadgeHtml}
-                    </div>
-                    <div class="card-scripture">${item.scripture}</div>
-                    <div class="card-topic">${item.topic}</div>
-                `;
-                
-                worshipList.appendChild(card);
-            });
-        }
-
-        /**
-         * 검색 필터링 함수
-         */
-        function filterData(query) {
-            const lowerQuery = query.toLowerCase().replace(/\s/g, ''); 
-
-            return worshipData.filter(item => {
-                const itemString = `
-                    ${item.date}
-                    ${item.scripture}
-                    ${item.topic}
-                `.toLowerCase().replace(/\s/g, '');
-                
-                return itemString.includes(lowerQuery);
-            });
-        }
-
-        // 이벤트 리스너: 검색창 입력 시 실시간 반응
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value;
-            const filteredData = filterData(query);
-            renderCards(filteredData);
-        });
-
-        // 초기 로딩 시 전체 데이터 렌더링
-        window.addEventListener('DOMContentLoaded', () => {
-            // 데이터를 날짜 기준 내림차순(최신순)으로 정렬
-            worshipData.sort((a, b) => b.date.localeCompare(a.date));
-            
-            renderCards(worshipData);
-        });
-
-    </script>
 </body>
 </html>
