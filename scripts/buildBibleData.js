@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const ROOT = 'daily/bible';
 const OUTPUT = 'daily/data/bibleData.js';
@@ -33,10 +33,7 @@ function walk(dir) {
 
     if (!file.endsWith('.html')) return;
 
-    if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
-      console.warn(`⚠️ SKIP (filename): ${file}`);
-      return;
-    }
+    if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) return;
 
     const html = fs.readFileSync(full, 'utf-8');
     const meta = extractMeta(html, full);
@@ -51,13 +48,10 @@ function walk(dir) {
   });
 }
 
-// 실행
 walk(ROOT);
 
-// 최신 날짜 순
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// 출력
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
 const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
