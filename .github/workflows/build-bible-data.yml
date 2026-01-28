@@ -3,8 +3,8 @@ name: Build Bible Data
 on:
   push:
     paths:
-      - "bible/**"
-      - "scripts/**"
+      - "daily/bible/**"
+      - "daily/scripts/**"
 
 jobs:
   build:
@@ -18,12 +18,12 @@ jobs:
           node-version: 20
 
       - name: Build bible data
-        run: node scripts/buildBibleData.js
+        run: node daily/scripts/buildBibleData.js
 
       - name: Commit data
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/bibleData.js
+          git add daily/data/bibleData.js
           git commit -m "auto: update bible data" || echo "No changes"
           git push
