@@ -22,6 +22,11 @@ function extractMeta(html, filePath) {
 }
 
 function walk(dir) {
+  if (!fs.existsSync(dir)) {
+    console.error(`❌ ROOT NOT FOUND: ${dir}`);
+    process.exit(1);
+  }
+
   fs.readdirSync(dir).forEach(file => {
     const full = path.join(dir, file);
     const stat = fs.statSync(full);
@@ -32,7 +37,6 @@ function walk(dir) {
     }
 
     if (!file.endsWith('.html')) return;
-
     if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) return;
 
     const html = fs.readFileSync(full, 'utf-8');
