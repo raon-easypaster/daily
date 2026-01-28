@@ -33,7 +33,7 @@ function walk(dir) {
 
     if (!file.endsWith('.html')) return;
 
-    // 파일명이 YYYY-MM-DD.html 형식이 아니면 스킵
+    // YYYY-MM-DD.html 만 허용
     if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
       console.warn(`⚠️ SKIP (filename): ${file}`);
       return;
@@ -47,8 +47,7 @@ function walk(dir) {
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-      link: full;
-
+      link: full.replace(/\\/g, '/') // ⭐ 핵심
     });
   });
 }
@@ -56,10 +55,10 @@ function walk(dir) {
 // 실행
 walk(ROOT);
 
-// 날짜 최신순 정렬
+// 최신 날짜 순
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// 출력 JS 생성
+// 출력
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
 const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
