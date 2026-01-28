@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 const ROOT = 'daily/bible';
 const OUTPUT = 'daily/data/bibleData.js';
@@ -23,7 +23,7 @@ function extractMeta(html, filePath) {
 
 function walk(dir) {
   if (!fs.existsSync(dir)) {
-    console.error(`❌ ROOT NOT FOUND: ${dir}`);
+    console.error(`❌ ROOT not found: ${dir}`);
     process.exit(1);
   }
 
@@ -37,7 +37,12 @@ function walk(dir) {
     }
 
     if (!file.endsWith('.html')) return;
-    if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) return;
+
+    // YYYY-MM-DD.html 만 허용
+    if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
+      console.warn(`⚠️ SKIP (filename): ${file}`);
+      return;
+    }
 
     const html = fs.readFileSync(full, 'utf-8');
     const meta = extractMeta(html, full);
@@ -52,8 +57,10 @@ function walk(dir) {
   });
 }
 
+// 실행
 walk(ROOT);
 
+// 🔥 핵심: 결과가 없어도 파일은 만든다
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
