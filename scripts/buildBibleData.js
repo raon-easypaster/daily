@@ -1,3 +1,4 @@
+console.log('🚀 buildBibleData.js started');
 const fs = require('fs');
 const path = require('path');
 
