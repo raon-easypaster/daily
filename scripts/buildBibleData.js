@@ -1,12 +1,28 @@
-console.log('🚀 buildBibleData.js started');
+/**
+ * buildBibleData.js
+ * ------------------------------------
+ * bible/ 아래의 YYYY-MM-DD.html 파일을 스캔하여
+ * daily/data/bibleData.js 를 자동 생성한다.
+ *
+ * 요구 조건:
+ * - <title>...</title>           → 카드 제목
+ * - <body data-scripture="...">  → 본문 정보
+ */
+
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = 'daily/bible';
+/** 🔹 실제 레포 기준 루트 (중요!) */
+const ROOT = 'bible';
+
+/** 🔹 GitHub Pages에서 로드될 위치 */
 const OUTPUT = 'daily/data/bibleData.js';
 
 const results = [];
 
+/* -----------------------------
+ * 메타 정보 추출
+ * ----------------------------- */
 function extractMeta(html, filePath) {
   const titleMatch = html.match(/<title>(.*?)<\/title>/i);
   const scriptureMatch = html.match(/data-scripture="([^"]+)"/i);
@@ -22,6 +38,9 @@ function extractMeta(html, filePath) {
   };
 }
 
+/* -----------------------------
+ * 디렉터리 순회
+ * ----------------------------- */
 function walk(dir) {
   if (!fs.existsSync(dir)) {
     console.error(`❌ ROOT not found: ${dir}`);
@@ -39,7 +58,7 @@ function walk(dir) {
 
     if (!file.endsWith('.html')) return;
 
-    // YYYY-MM-DD.html 만 허용
+    // 파일명: YYYY-MM-DD.html 만 허용
     if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
       console.warn(`⚠️ SKIP (filename): ${file}`);
       return;
@@ -53,20 +72,23 @@ function walk(dir) {
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-      link: full.replace(/^daily\//, ''),
+
+      // 👉 GitHub Pages 기준 링크 (/daily/ 이후)
+      link: full.replace(/^bible\//, ''),
     });
   });
 }
 
-// 실행
-console.log('🚀 buildBibleData.js started');
+/* -----------------------------
+ * 실행
+ * ----------------------------- */
+console.log(`📂 scanning ROOT: ${ROOT}`);
 walk(ROOT);
-console.log('📂 scanning ROOT:', ROOT);
 
-
-// 🔥 핵심: 결과가 없어도 파일은 만든다
+/* 최신 날짜순 정렬 */
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+/* JS 파일 생성 */
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
 const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
