@@ -47,7 +47,8 @@ function walk(dir) {
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-      link: full.replace(/^daily\//, ''),
+      link: full;
+
     });
   });
 }
