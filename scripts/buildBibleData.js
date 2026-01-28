@@ -1,9 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = 'bible';
+const ROOT = 'daily/bible';
 const OUTPUT = 'daily/data/bibleData.js';
-
 
 const results = [];
 
@@ -34,7 +33,6 @@ function walk(dir) {
 
     if (!file.endsWith('.html')) return;
 
-    // YYYY-MM-DD.html 형식만 허용
     if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
       console.warn(`⚠️ SKIP (filename): ${file}`);
       return;
@@ -48,7 +46,7 @@ function walk(dir) {
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-      link: full.replace(/\\/g, '/')
+      link: full.replace(/^daily\//, ''),
     });
   });
 }
@@ -56,10 +54,10 @@ function walk(dir) {
 // 실행
 walk(ROOT);
 
-// 최신 날짜 순 정렬
+// 최신 날짜 순
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// 출력 파일 생성
+// 출력
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
 const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
