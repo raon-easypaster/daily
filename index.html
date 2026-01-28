@@ -88,10 +88,10 @@ h1{
   display:flex;
   gap:6px;
   align-items:center;
+  flex-wrap:wrap;
 }
 .card-date::before{content:'📅'}
 .badge{
-  margin-left:6px;
   padding:2px 8px;
   border-radius:10px;
   font-size:.7rem;
@@ -146,10 +146,19 @@ h1{
 </main>
 </div>
 
+<!-- ✅ 1. 자동 생성된 데이터 (GitHub Actions) -->
+<script src="data/bibleData.js"></script>
+
+<!-- ✅ 2. 모든 로직은 이 script 하나 -->
 <script>
 /* ===== 설정 ===== */
 const NEW_DAYS = 3;
 const WEEK = ['일','월','화','수','목','금','토'];
+
+/* ===== DOM ===== */
+const list = document.getElementById('list');
+const q = document.getElementById('q');
+const no = document.getElementById('no');
 
 /* ===== 유틸 ===== */
 const today = new Date();
@@ -161,40 +170,11 @@ const fmt = d => {
   return `${x.getFullYear()}.${String(x.getMonth()+1).padStart(2,'0')}.${String(x.getDate()).padStart(2,'0')}(${WEEK[x.getDay()]})`;
 };
 
-/* ===== 데이터 (가정예배만) ===== */
-const DATA = [
-  {date:'2026-01-02', scripture:'창세기 1장', title:'천지창조의 시작', link:'bible/genesis/genesis1.html'},
-  {date:'2026-01-05', scripture:'창세기 2장', title:'에덴동산과 안식일', link:'bible/genesis/genesis2.html'},
-  {date:'2026-01-06', scripture:'창세기 3장', title:'인간의 타락과 약속', link:'bible/genesis/genesis3.html'},
-  {date:'2026-01-07', scripture:'창세기 4장', title:'가인과 아벨', link:'bible/genesis/genesis4.html'},
-  {date:'2026-01-08', scripture:'창세기 5장', title:'아담의 족보', link:'bible/genesis/genesis5.html'},
-  {date:'2026-01-09', scripture:'창세기 6장', title:'노아와 홍수의 예고', link:'bible/genesis/genesis6.html'},
-  {date:'2026-01-12', scripture:'창세기 7장', title:'홍수의 심판', link:'bible/genesis/genesis7.html'},
-  {date:'2026-01-13', scripture:'창세기 8장', title:'새로운 시작', link:'bible/genesis/genesis8.html'},
-  {date:'2026-01-14', scripture:'창세기 9장', title:'무지개 언약', link:'bible/genesis/genesis9.html'},
-  {date:'2026-01-15', scripture:'창세기 10장', title:'노아 아들들의 족보', link:'bible/genesis/genesis10.html'},
-  {date:'2026-01-16', scripture:'창세기 11장', title:'바벨탑 사건', link:'bible/genesis/genesis11.html'},
-  {date:'2026-01-19', scripture:'창세기 12장', title:'아브람을 부르심', link:'bible/genesis/genesis12.html'},
-  {date:'2026-01-20', scripture:'창세기 13장', title:'아브람과 롯의 분기', link:'bible/genesis/genesis13.html'},
-  {date:'2026-01-21', scripture:'창세기 14장', title:'롯을 구한 아브라함', link:'bible/genesis/genesis14.html'},
-  {date:'2026-01-22', scripture:'창세기 15장', title:'언약이 세워지다', link:'bible/genesis/genesis15.html'},
-  {date:'2026-01-23', scripture:'창세기 16장', title:'하갈과 이스마엘', link:'bible/genesis/genesis16.html'},
-  {date:'2026-01-26', scripture:'창세기 17장', title:'할례: 언약의 표징', link:'bible/genesis/genesis17.html'},
-  {date:'2026-01-27', scripture:'창세기 18장', title:'약속의 방문', link:'bible/genesis/genesis18.html'},
-  {date:'2026-01-28', scripture:'창세기 19장', title:'소돔과 고모라', link:'bible/genesis/genesis19.html'},
-  {date:'2026-01-29', scripture:'창세기 20장', title:'아브라함과 아비멜렉', link:'bible/genesis/genesis20.html'}
-];
-
-
 /* ===== 렌더 ===== */
-const list = document.getElementById('list');
-const no = document.getElementById('no');
-const q = document.getElementById('q');
-
 function render(){
   const query = q.value.replace(/\s/g,'').toLowerCase();
-  const rows = DATA
-    .filter(r=>`${r.date}${r.scripture}${r.title}`.replace(/\s/g,'').toLowerCase().includes(query))
+  const rows = BIBLE_DATA
+    .filter(r => `${r.date}${r.scripture}${r.title}`.replace(/\s/g,'').toLowerCase().includes(query))
     .sort((a,b)=>new Date(b.date)-new Date(a.date));
 
   list.innerHTML='';
@@ -222,5 +202,6 @@ function render(){
 q.addEventListener('input', render);
 render();
 </script>
+
 </body>
 </html>
