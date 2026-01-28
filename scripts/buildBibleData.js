@@ -1,36 +1,21 @@
-/**
- * buildBibleData.js
- * ------------------------------------
- * bible/ 아래의 YYYY-MM-DD.html 파일을 스캔하여
- * daily/data/bibleData.js 를 자동 생성한다.
- *
- * 요구 조건:
- * - <title>...</title>           → 카드 제목
- * - <body data-scripture="...">  → 본문 정보
- */
-
 const fs = require('fs');
 const path = require('path');
 
-/** 🔹 실제 레포 기준 루트 (중요!) */
-const ROOT = 'bible';
-
-/** 🔹 GitHub Pages에서 로드될 위치 */
-const OUTPUT = 'daily/data/bibleData.js';
+const ROOT = path.join(__dirname, '..', 'bible');
+const OUTPUT = path.join(__dirname, '..', 'data', 'bibleData.js');
 
 const results = [];
 
-/* -----------------------------
- * 메타 정보 추출
- * ----------------------------- */
-function extractMeta(html, filePath) {
+if (!fs.existsSync(ROOT)) {
+  console.error(`❌ ROOT not found: ${ROOT}`);
+  process.exit(1);
+}
+
+function extractMeta(html) {
   const titleMatch = html.match(/<title>(.*?)<\/title>/i);
   const scriptureMatch = html.match(/data-scripture="([^"]+)"/i);
 
-  if (!titleMatch || !scriptureMatch) {
-    console.warn(`⚠️ SKIP (meta missing): ${filePath}`);
-    return null;
-  }
+  if (!titleMatch || !scriptureMatch) return null;
 
   return {
     title: titleMatch[1].trim(),
@@ -38,62 +23,39 @@ function extractMeta(html, filePath) {
   };
 }
 
-/* -----------------------------
- * 디렉터리 순회
- * ----------------------------- */
 function walk(dir) {
-  if (!fs.existsSync(dir)) {
-    console.error(`❌ ROOT not found: ${dir}`);
-    process.exit(1);
-  }
-
   fs.readdirSync(dir).forEach(file => {
     const full = path.join(dir, file);
     const stat = fs.statSync(full);
 
-    if (stat.isDirectory()) {
-      walk(full);
-      return;
-    }
-
+    if (stat.isDirectory()) return walk(full);
     if (!file.endsWith('.html')) return;
-
-    // 파일명: YYYY-MM-DD.html 만 허용
-    if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
-      console.warn(`⚠️ SKIP (filename): ${file}`);
-      return;
-    }
+    if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) return;
 
     const html = fs.readFileSync(full, 'utf-8');
-    const meta = extractMeta(html, full);
+    const meta = extractMeta(html);
     if (!meta) return;
 
     results.push({
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-
-      // 👉 GitHub Pages 기준 링크 (/daily/ 이후)
-      link: full.replace(/^bible\//, ''),
+      link: `bible/${file}`,
     });
   });
 }
 
-/* -----------------------------
- * 실행
- * ----------------------------- */
-console.log(`📂 scanning ROOT: ${ROOT}`);
 walk(ROOT);
 
-/* 최신 날짜순 정렬 */
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-/* JS 파일 생성 */
-const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
-const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
+fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
+
+const output = `// AUTO-GENERATED FILE
+window.BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
 
-fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
 fs.writeFileSync(OUTPUT, output, 'utf-8');
 
-console.log(`✅ Generated ${results.length} items → ${OUTPUT}`);
+console.log(`✅ Generated ${results.length} items`);
+console.log(`📄 Output → ${OUTPUT}`);
