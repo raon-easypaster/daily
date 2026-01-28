@@ -59,7 +59,10 @@ function walk(dir) {
 }
 
 // 실행
+console.log('🚀 buildBibleData.js started');
 walk(ROOT);
+console.log('📂 scanning ROOT:', ROOT);
+
 
 // 🔥 핵심: 결과가 없어도 파일은 만든다
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
