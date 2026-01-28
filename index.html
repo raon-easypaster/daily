@@ -274,29 +274,36 @@
          * isNew: true 설정 시 카드에 'NEW' 배지 표시
          * 날짜 수정: 2026.01.02(금) 시작 ~ 2026.01.20(화) 끝 (주말 제외)
          */
-        const worshipData = [
-            { id: 1, date: "2026.01.02(금)", scripture: "창세기 1장", topic: "천지창조의 시작", link: "bible/genesis/genesis1.html" },
-            { id: 2, date: "2026.01.05(월)", scripture: "창세기 2장", topic: "에덴동산과 안식일", link: "bible/genesis/genesis2.html" },
-            { id: 3, date: "2026.01.06(화)", scripture: "창세기 3장", topic: "인간의 타락과 약속", link: "bible/genesis/genesis3.html" },
-            { id: 4, date: "2026.01.07(수)", scripture: "창세기 4장", topic: "가인과 아벨", link: "bible/genesis/genesis4.html" },
-            { id: 5, date: "2026.01.08(목)", scripture: "창세기 5장", topic: "아담의 족보", link: "bible/genesis/genesis5.html" },
-            { id: 6, date: "2026.01.09(금)", scripture: "창세기 6장", topic: "노아와 홍수의 예고", link: "bible/genesis/genesis6.html" },
-            { id: 7, date: "2026.01.12(월)", scripture: "창세기 7장", topic: "홍수의 심판", link: "bible/genesis/genesis7.html" },
-            { id: 8, date: "2026.01.13(화)", scripture: "창세기 8장", topic: "새로운 시작", link: "bible/genesis/genesis8.html" },
-            { id: 9, date: "2026.01.14(수)", scripture: "창세기 9장", topic: "무지개 언약", link: "bible/genesis/genesis9.html" },
-            { id: 10, date: "2026.01.15(목)", scripture: "창세기 10장", topic: "노아 아들들의 족보", link: "bible/genesis/genesis10.html" },
-            { id: 11, date: "2026.01.16(금)", scripture: "창세기 11장", topic: "바벨탑 사건", link: "bible/genesis/genesis11.html" },
-            { id: 12, date: "2026.01.19(월)", scripture: "창세기 12장", topic: "아브람을 부르심", link: "bible/genesis/genesis12.html" }, 
-            { id: 13, date: "2026.01.20(화)", scripture: "창세기 13장", topic: "아브람과 롯의 분기", link: "bible/genesis/genesis13.html" },
-            { id: 14, date: "2026.01.21(수)", scripture: "창세기 14장", topic: "롯을 구한 아브라함", link: "bible/genesis/genesis14.html" },
-            { id: 15, date: "2026.01.22(목)", scripture: "창세기 15장", topic: "언약이 세워지다", link: "bible/genesis/genesis15.html" },
-            { id: 16, date: "2026.01.23(금)", scripture: "창세기 16장", topic: "하갈과 이스마엘", link: "bible/genesis/genesis16.html",
-            { id: 17, date: "2026.01.26(월)", scripture: "창세기 17장", topic: "할례: 언약의 표징", link: "bible/genesis/genesis15.html" },
-            { id: 18, date: "2026.01.27(화)", scripture: "창세기 18장", topic: "약속", link: "bible/genesis/genesis16.html",
-            { id: 19, date: "2026.01.27(화)", scripture: "창세기 19장", topic: "소돔성", link: "bible/genesis/genesis16.html",
-                isNew: true // NEW 배지 표시
-            }
-        ];
+<script>
+const worshipData = [
+    { id: 1, date: "2026.01.02(금)", scripture: "창세기 1장", topic: "천지창조의 시작", link: "bible/genesis/genesis1.html" },
+    { id: 2, date: "2026.01.05(월)", scripture: "창세기 2장", topic: "에덴동산과 안식일", link: "bible/genesis/genesis2.html" },
+    { id: 3, date: "2026.01.06(화)", scripture: "창세기 3장", topic: "인간의 타락과 약속", link: "bible/genesis/genesis3.html" },
+    { id: 4, date: "2026.01.07(수)", scripture: "창세기 4장", topic: "가인과 아벨", link: "bible/genesis/genesis4.html" },
+    { id: 5, date: "2026.01.08(목)", scripture: "창세기 5장", topic: "아담의 족보", link: "bible/genesis/genesis5.html" },
+    { id: 6, date: "2026.01.09(금)", scripture: "창세기 6장", topic: "노아와 홍수의 예고", link: "bible/genesis/genesis6.html" },
+    { id: 7, date: "2026.01.12(월)", scripture: "창세기 7장", topic: "홍수의 심판", link: "bible/genesis/genesis7.html" },
+    { id: 8, date: "2026.01.13(화)", scripture: "창세기 8장", topic: "새로운 시작", link: "bible/genesis/genesis8.html" },
+    { id: 9, date: "2026.01.14(수)", scripture: "창세기 9장", topic: "무지개 언약", link: "bible/genesis/genesis9.html" },
+    { id: 10, date: "2026.01.15(목)", scripture: "창세기 10장", topic: "노아 아들들의 족보", link: "bible/genesis/genesis10.html" },
+    { id: 11, date: "2026.01.16(금)", scripture: "창세기 11장", topic: "바벨탑 사건", link: "bible/genesis/genesis11.html" },
+    { id: 12, date: "2026.01.19(월)", scripture: "창세기 12장", topic: "아브람을 부르심", link: "bible/genesis/genesis12.html" },
+    { id: 13, date: "2026.01.20(화)", scripture: "창세기 13장", topic: "아브람과 롯의 분기", link: "bible/genesis/genesis13.html" },
+    { id: 14, date: "2026.01.21(수)", scripture: "창세기 14장", topic: "롯을 구한 아브라함", link: "bible/genesis/genesis14.html" },
+    { id: 15, date: "2026.01.22(목)", scripture: "창세기 15장", topic: "언약이 세워지다", link: "bible/genesis/genesis15.html" },
+    { id: 16, date: "2026.01.23(금)", scripture: "창세기 16장", topic: "하갈과 이스마엘", link: "bible/genesis/genesis16.html" },
+    { id: 17, date: "2026.01.26(월)", scripture: "창세기 17장", topic: "할례: 언약의 표징", link: "bible/genesis/genesis17.html" },
+    { id: 18, date: "2026.01.27(화)", scripture: "창세기 18장", topic: "약속의 방문", link: "bible/genesis/genesis18.html" },
+    { 
+        id: 19, 
+        date: "2026.01.28(수)", 
+        scripture: "창세기 19장", 
+        topic: "소돔과 고모라", 
+        link: "bible/genesis/genesis19.html",
+        isNew: true
+    }
+];
+</script>
 
         // DOM 요소 선택
         const worshipList = document.getElementById('worshipList');
