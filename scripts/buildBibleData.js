@@ -57,7 +57,7 @@ walk(ROOT);
 
 // 🔑 핵심: 데이터가 없어도 파일은 무조건 만든다
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
-const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
+window.BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
