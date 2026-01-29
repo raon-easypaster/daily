@@ -1,0 +1,8 @@
+- name: Check bible html
+  run: node scripts/checkBibleHtml.js
+
+- name: Check genesis sequence
+  run: node scripts/checkGenesisSequence.js
+
+- name: Build bible data
+  run: node scripts/buildBibleData.js
