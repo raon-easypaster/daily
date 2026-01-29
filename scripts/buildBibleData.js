@@ -1,11 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = 'bible';
-const OUTPUT = 'data/bibleData.js';
+const ROOT = 'bible';              // HTML 원본 폴더
+const OUTPUT = 'data/bibleData.js'; // index.html 기준 상대경로
 
 const results = [];
 
+/* ===== 메타 추출 ===== */
 function extractMeta(html, filePath) {
   const titleMatch = html.match(/<title>(.*?)<\/title>/i);
   const scriptureMatch = html.match(/data-scripture="([^"]+)"/i);
@@ -21,6 +22,7 @@ function extractMeta(html, filePath) {
   };
 }
 
+/* ===== 디렉터리 순회 ===== */
 function walk(dir) {
   if (!fs.existsSync(dir)) {
     console.error(`❌ ROOT not found: ${dir}`);
@@ -38,6 +40,7 @@ function walk(dir) {
 
     if (!file.endsWith('.html')) return;
 
+    // YYYY-MM-DD.html 만 허용
     if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(file)) {
       console.warn(`⚠️ SKIP (filename): ${file}`);
       return;
@@ -51,18 +54,19 @@ function walk(dir) {
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-      link: full.replace(/\\/g, '/'), // Windows 대응
+      // ✅ GitHub Pages + /daily/ 하위 경로 대응
+      link: `./${full.replace(/\\/g, '/')}`,
     });
   });
 }
 
-// 실행
+/* ===== 실행 ===== */
 walk(ROOT);
 
-// 최신순
+// 최신 날짜 순
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// 출력
+/* ===== 파일 출력 ===== */
 const output = `// AUTO-GENERATED FILE (DO NOT EDIT)
 const BIBLE_DATA = ${JSON.stringify(results, null, 2)};
 `;
