@@ -1,9 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// ✅ GitHub Actions 기준 경로
-const ROOT = path.join(__dirname, '..', 'bible');
-const OUTPUT = path.join(__dirname, '..', 'data', 'bibleData.js');
+const ROOT = 'bible';
+const OUTPUT = 'data/bibleData.js';
 
 const results = [];
 
@@ -52,7 +51,7 @@ function walk(dir) {
       date: file.replace('.html', ''),
       title: meta.title,
       scripture: meta.scripture,
-      link: `bible/${file}` // ✅ Pages 기준 상대경로
+      link: full.replace(/\\/g, '/'), // Windows 대응
     });
   });
 }
@@ -60,7 +59,7 @@ function walk(dir) {
 // 실행
 walk(ROOT);
 
-// 최신순 정렬
+// 최신순
 results.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 // 출력
