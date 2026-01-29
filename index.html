@@ -146,11 +146,16 @@ h1{
 </main>
 </div>
 
-<!-- ✅ 1. 자동 생성된 데이터 (GitHub Actions) -->
-<script src="./data/bibleData.js"></script>
+<!-- ✅ 1. 자동 생성 데이터 -->
+<script src="data/bibleData.js"></script>
 
-<!-- ✅ 2. 모든 로직은 이 script 하나 -->
+<!-- ✅ 2. 렌더링 로직 -->
 <script>
+/* ===== 안전 가드 ===== */
+if (!window.BIBLE_DATA) {
+  console.error('❌ BIBLE_DATA not loaded');
+}
+
 /* ===== 설정 ===== */
 const NEW_DAYS = 3;
 const WEEK = ['일','월','화','수','목','금','토'];
@@ -172,6 +177,8 @@ const fmt = d => {
 
 /* ===== 렌더 ===== */
 function render(){
+  if (!window.BIBLE_DATA || !Array.isArray(BIBLE_DATA)) return;
+
   const query = q.value.replace(/\s/g,'').toLowerCase();
   const rows = BIBLE_DATA
     .filter(r => `${r.date}${r.scripture}${r.title}`.replace(/\s/g,'').toLowerCase().includes(query))
