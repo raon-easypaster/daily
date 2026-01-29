@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE (DO NOT EDIT)
-const BIBLE_DATA = [
+window.BIBLE_DATA = [
   {
     "date": "2026-01-02",
     "title": "천지창조의 시작",
