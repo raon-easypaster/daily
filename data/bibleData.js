@@ -86,8 +86,8 @@ window.BIBLE_DATA = [
   },
   {
     "date": "2026-01-22",
-    "title": "라온동행교회 가정예배서",
-    "scripture": "창세기",
+    "title": "창세기 15장 – 두려움을 이기는 언약의 별빛",
+    "scripture": "창세기 15장",
     "link": "bible/genesis/2026-01-22.html"
   },
   {
