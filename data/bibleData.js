@@ -129,7 +129,7 @@ window.BIBLE_DATA = [
   {
     "date": "2026-02-02",
     "title": "라온동행교회 가정예배서",
-    "scripture": "창세기 24장",
+    "scripture": "창세기 22장",
     "link": "bible/genesis/2026-02-02.html"
   }
 ];
