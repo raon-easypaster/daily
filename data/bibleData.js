@@ -155,5 +155,35 @@ window.BIBLE_DATA = [
     "title": "라온동행교회 가정예배서",
     "scripture": "창세기 26장",
     "link": "bible/genesis/2026-02-06.html"
+  },
+  {
+    "date": "2026-02-09",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 27장",
+    "link": "bible/genesis/2026-02-09.html"
+  },
+  {
+    "date": "2026-02-10",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 28장",
+    "link": "bible/genesis/2026-02-10.html"
+  },
+  {
+    "date": "2026-02-11",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 29장",
+    "link": "bible/genesis/2026-02-11.html"
+  },
+  {
+    "date": "2026-02-12",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 30장",
+    "link": "bible/genesis/2026-02-12.html"
+  },
+  {
+    "date": "2026-02-13",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 31장",
+    "link": "bible/genesis/2026-02-13.html"
   }
 ];
