@@ -185,5 +185,17 @@ window.BIBLE_DATA = [
     "title": "라온동행교회 가정예배서",
     "scripture": "창세기 31장",
     "link": "bible/genesis/2026-02-13.html"
+  },
+  {
+    "date": "2026-02-19",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 32장",
+    "link": "bible/genesis/2026-02-19.html"
+  },
+  {
+    "date": "2026-02-20",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 33장",
+    "link": "bible/genesis/2026-02-20.html"
   }
 ];
