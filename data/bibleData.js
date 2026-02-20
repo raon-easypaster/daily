@@ -197,5 +197,35 @@ window.BIBLE_DATA = [
     "title": "라온동행교회 가정예배서",
     "scripture": "창세기 33장",
     "link": "bible/genesis/2026-02-20.html"
+  },
+  {
+    "date": "2026-02-23",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 34장",
+    "link": "bible/genesis/2026-02-23.html"
+  },
+  {
+    "date": "2026-02-24",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 35장",
+    "link": "bible/genesis/2026-02-24.html"
+  },
+  {
+    "date": "2026-02-25",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 36장",
+    "link": "bible/genesis/2026-02-25.html"
+  },
+  {
+    "date": "2026-02-26",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 37장",
+    "link": "bible/genesis/2026-02-26.html"
+  },
+  {
+    "date": "2026-02-27",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 38장",
+    "link": "bible/genesis/2026-02-27.html"
   }
 ];
