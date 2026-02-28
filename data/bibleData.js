@@ -227,5 +227,11 @@ window.BIBLE_DATA = [
     "title": "라온동행교회 가정예배서",
     "scripture": "창세기 38장",
     "link": "bible/genesis/2026-02-27.html"
+  },
+  {
+    "date": "2026-03-02",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 39장",
+    "link": "bible/genesis/2026-03-02.html"
   }
 ];
