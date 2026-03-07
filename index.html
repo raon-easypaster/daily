@@ -1,214 +1,259 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>라온동행교회 가정예배 아카이브</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라온동행교회 가정예배 아카이브</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --primary:#6A1B9A;
-  --accent:#AB47BC;
-  --bg:#F3E5F5;
-  --card:#fff;
-  --text:#333;
-  --sub:#666;
-  --shadow:0 4px 20px rgba(106,27,154,.1);
-  --radius:16px;
-  --new:#FF7043;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Gowun Batang',serif;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
-}
-header{
-  text-align:center;
-  margin-bottom:40px;
-}
-.church{
-  color:var(--accent);
-  font-weight:700;
-}
-h1{
-  font-size:2.5rem;
-  color:var(--primary);
-}
-.sub{
-  color:var(--sub);
-}
-.search{
-  max-width:600px;
-  margin:0 auto 50px;
-}
-.search input{
-  width:100%;
-  padding:16px 24px;
-  font-size:1.1rem;
-  border-radius:999px;
-  border:none;
-  box-shadow:var(--shadow);
-}
-.grid{
-  display:grid;
-  gap:24px;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-}
-.card{
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:24px;
-  box-shadow:var(--shadow);
-  text-decoration:none;
-  color:inherit;
-  position:relative;
-  transition:.25s;
-}
-.card:hover{transform:translateY(-5px)}
-.card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:4px;
-  background:linear-gradient(to right,#E1BEE7,#BA68C8);
-}
-.card-date{
-  font-size:.9rem;
-  color:var(--sub);
-  display:flex;
-  gap:6px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-.card-date::before{content:'📅'}
-.badge{
-  padding:2px 8px;
-  border-radius:10px;
-  font-size:.7rem;
-  font-weight:700;
-  color:#fff;
-}
-.badge.new{background:var(--new)}
-.badge.today{background:#E53935}
-.badge.sun{background:#1E88E5}
-.scripture{
-  margin:10px 0;
-  color:var(--accent);
-  font-weight:700;
-  background:#F3E5F5;
-  padding:4px 12px;
-  border-radius:20px;
-  display:inline-block;
-}
-.title{
-  font-size:1.25rem;
-  font-weight:700;
-}
-.card.today{
-  border:2px solid #E53935;
-  background:#FFF5F5;
-  box-shadow:0 12px 30px rgba(229,57,53,.25);
-}
-.no{
-  display:none;
-  text-align:center;
-  padding:60px;
-  color:var(--sub);
-}
-</style>
+  <style>
+    :root {
+      --primary: #6A1B9A;
+      --accent: #AB47BC;
+      --bg: #F3E5F5;
+      --card: #fff;
+      --text: #333;
+      --sub: #666;
+      --shadow: 0 4px 20px rgba(106, 27, 154, .1);
+      --radius: 16px;
+      --new: #FF7043;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: 'Gowun Batang', serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .church {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+
+    .sub {
+      color: var(--sub);
+    }
+
+    .search {
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 16px 24px;
+      font-size: 1.1rem;
+      border-radius: 999px;
+      border: none;
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px)
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #E1BEE7, #BA68C8);
+    }
+
+    .card-date {
+      font-size: .9rem;
+      color: var(--sub);
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .card-date::before {
+      content: '📅'
+    }
+
+    .badge {
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: .7rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .badge.new {
+      background: var(--new)
+    }
+
+    .badge.today {
+      background: #E53935
+    }
+
+    .badge.sun {
+      background: #1E88E5
+    }
+
+    .scripture {
+      margin: 10px 0;
+      color: var(--accent);
+      font-weight: 700;
+      background: #F3E5F5;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .card.today {
+      border: 2px solid #E53935;
+      background: #FFF5F5;
+      box-shadow: 0 12px 30px rgba(229, 57, 53, .25);
+    }
+
+    .no {
+      display: none;
+      text-align: center;
+      padding: 60px;
+      color: var(--sub);
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
-<header>
-  <p class="church">기독교 대한성결교회 라온동행교회</p>
-  <h1>가정예배 아카이브</h1>
-  <p class="sub">말씀과 동행하는 매일의 은혜</p>
-</header>
+  <div class="container">
+    <header>
+      <p class="church">기독교 대한성결교회 라온동행교회</p>
+      <h1>가정예배 아카이브</h1>
+      <p class="sub">말씀과 동행하는 매일의 은혜</p>
+    </header>
 
-<div class="search">
-  <input id="q" placeholder="날짜, 본문, 주제를 검색하세요">
-</div>
+    <div class="search">
+      <input id="q" placeholder="날짜, 본문, 주제를 검색하세요">
+    </div>
 
-<main>
-  <div id="list" class="grid"></div>
-  <div id="no" class="no">🍃 검색 결과가 없습니다</div>
-</main>
-</div>
+    <main>
+      <div id="list" class="grid"></div>
+      <div id="no" class="no">🍃 검색 결과가 없습니다</div>
+    </main>
+  </div>
 
-<!-- ✅ 1. 자동 생성 데이터 -->
-<script src="data/bibleData.js"></script>
+  <!-- ✅ 1. 자동 생성 데이터 -->
+  <script src="data/bibleData.js"></script>
 
-<!-- ✅ 2. 렌더링 로직 -->
-<script>
-/* ===== 안전 가드 ===== */
-if (!window.BIBLE_DATA) {
-  console.error('❌ BIBLE_DATA not loaded');
-}
+  <!-- ✅ 2. 렌더링 로직 -->
+  <script>
+    /* ===== 안전 가드 ===== */
+    if (!window.BIBLE_DATA) {
+      console.error('❌ BIBLE_DATA not loaded');
+    }
 
-/* ===== 설정 ===== */
-const NEW_DAYS = 3;
-const WEEK = ['일','월','화','수','목','금','토'];
+    /* ===== 설정 ===== */
+    const NEW_DAYS = 3;
+    const WEEK = ['일', '월', '화', '수', '목', '금', '토'];
 
-/* ===== DOM ===== */
-const list = document.getElementById('list');
-const q = document.getElementById('q');
-const no = document.getElementById('no');
+    /* ===== DOM ===== */
+    const list = document.getElementById('list');
+    const q = document.getElementById('q');
+    const no = document.getElementById('no');
 
-/* ===== 유틸 ===== */
-const today = new Date();
-const isNew = d => (today - new Date(d))/(1000*60*60*24) <= NEW_DAYS;
-const isSunday = d => new Date(d).getDay() === 0;
-const isToday = d => new Date(d).toDateString() === today.toDateString();
-const fmt = d => {
-  const x=new Date(d);
-  return `${x.getFullYear()}.${String(x.getMonth()+1).padStart(2,'0')}.${String(x.getDate()).padStart(2,'0')}(${WEEK[x.getDay()]})`;
-};
+    /* ===== 유틸 ===== */
+    const today = new Date();
+    const isNew = d => (today - new Date(d)) / (1000 * 60 * 60 * 24) <= NEW_DAYS;
+    const isSunday = d => new Date(d).getDay() === 0;
+    const isToday = d => new Date(d).toDateString() === today.toDateString();
+    const fmt = d => {
+      const x = new Date(d);
+      return `${x.getFullYear()}.${String(x.getMonth() + 1).padStart(2, '0')}.${String(x.getDate()).padStart(2, '0')}(${WEEK[x.getDay()]})`;
+    };
 
-/* ===== 렌더 ===== */
-function render(){
-  if (!window.BIBLE_DATA || !Array.isArray(BIBLE_DATA)) return;
+    /* ===== 렌더 ===== */
+    function render() {
+      if (!window.BIBLE_DATA || !Array.isArray(BIBLE_DATA)) return;
 
-  const query = q.value.replace(/\s/g,'').toLowerCase();
-  const rows = BIBLE_DATA
-    .filter(r => `${r.date}${r.scripture}${r.title}`.replace(/\s/g,'').toLowerCase().includes(query))
-    .sort((a,b)=>new Date(b.date)-new Date(a.date));
+      const query = q.value.replace(/\s/g, '').toLowerCase();
+      const rows = BIBLE_DATA
+        .filter(r => `${r.date}${r.scripture}${r.title}`.replace(/\s/g, '').toLowerCase().includes(query))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  list.innerHTML='';
-  if(!rows.length){ no.style.display='block'; return; }
-  no.style.display='none';
+      list.innerHTML = '';
+      if (!rows.length) { no.style.display = 'block'; return; }
+      no.style.display = 'none';
 
-  rows.forEach(r=>{
-    const a=document.createElement('a');
-    a.className='card'+(isToday(r.date)?' today':'');
-    a.href=r.link;
-    a.innerHTML=`
+      rows.forEach((r, index) => {
+        const isMain = index === 0;
+        const a = document.createElement('a');
+
+        // 첫 번째 카드는 무조건 강조 (메인 카드)
+        a.className = 'card' + (isMain ? ' today' : '');
+        a.href = r.link;
+        a.innerHTML = `
       <div class="card-date">
         ${fmt(r.date)}
-        ${isToday(r.date)?'<span class="badge today">TODAY</span>':''}
-        ${isSunday(r.date)?'<span class="badge sun">주일</span>':''}
-        ${isNew(r.date)?'<span class="badge new">NEW</span>':''}
+        ${isToday(r.date) ? '<span class="badge today">TODAY</span>' : ''}
+        ${index === 0 && !isToday(r.date) ? '<span class="badge new">LATEST</span>' : ''}
+        ${index > 0 && isNew(r.date) ? '<span class="badge new">NEW</span>' : ''}
+        ${isSunday(r.date) ? '<span class="badge sun">주일</span>' : ''}
       </div>
       <div class="scripture">${r.scripture}</div>
       <div class="title">${r.title}</div>
     `;
-    list.appendChild(a);
-  });
-}
+        list.appendChild(a);
+      });
+    }
 
-q.addEventListener('input', render);
-render();
-</script>
+    q.addEventListener('input', render);
+    render();
+  </script>
 
 </body>
+
 </html>
