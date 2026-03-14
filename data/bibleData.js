@@ -281,5 +281,17 @@ window.BIBLE_DATA = [
     "title": "라온동행교회 가정예배서",
     "scripture": "창세기 47장",
     "link": "bible/genesis/2026-03-13.html"
+  },
+  {
+    "date": "2026-03-16",
+    "title": "2026-03-16",
+    "scripture": "창세기 48장",
+    "link": "bible/genesis/2026-03-16.html"
+  },
+  {
+    "date": "2026-03-17",
+    "title": "2026-03-17",
+    "scripture": "창세기 49장",
+    "link": "bible/genesis/2026-03-17.html"
   }
 ];
