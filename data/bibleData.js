@@ -293,5 +293,11 @@ window.BIBLE_DATA = [
     "title": "2026-03-17",
     "scripture": "창세기 49장",
     "link": "bible/genesis/2026-03-17.html"
+  },
+  {
+    "date": "2026-03-18",
+    "title": "2026-03-18",
+    "scripture": "창세기 50장",
+    "link": "bible/genesis/2026-03-18.html"
   }
 ];
