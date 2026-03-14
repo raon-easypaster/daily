@@ -7,6 +7,18 @@ window.BIBLE_DATA = [
     "link": "bible/exodus/2026-03-18.html"
   },
   {
+    "date": "2026-03-19",
+    "title": "2026-03-19",
+    "scripture": "출애굽기 1장",
+    "link": "bible/exodus/2026-03-19.html"
+  },
+  {
+    "date": "2026-03-20",
+    "title": "2026-03-20",
+    "scripture": "출애굽기 2장",
+    "link": "bible/exodus/2026-03-20.html"
+  },
+  {
     "date": "2026-01-02",
     "title": "천지창조의 시작",
     "scripture": "창세기 1장",
