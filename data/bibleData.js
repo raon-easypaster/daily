@@ -187,33 +187,75 @@ window.BIBLE_DATA = [
     "link": "bible/genesis/2026-02-13.html"
   },
   {
+    "date": "2026-02-19",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 32장",
+    "link": "bible/genesis/2026-02-19.html"
+  },
+  {
+    "date": "2026-02-20",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 33장",
+    "link": "bible/genesis/2026-02-20.html"
+  },
+  {
+    "date": "2026-02-23",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 34장",
+    "link": "bible/genesis/2026-02-23.html"
+  },
+  {
+    "date": "2026-02-24",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 35장",
+    "link": "bible/genesis/2026-02-24.html"
+  },
+  {
+    "date": "2026-02-25",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 36장",
+    "link": "bible/genesis/2026-02-25.html"
+  },
+  {
+    "date": "2026-02-26",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 37장",
+    "link": "bible/genesis/2026-02-26.html"
+  },
+  {
+    "date": "2026-02-27",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 38장",
+    "link": "bible/genesis/2026-02-27.html"
+  },
+  {
+    "date": "2026-03-03",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 39장",
+    "link": "bible/genesis/2026-03-03.html"
+  },
+  {
+    "date": "2026-03-04",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 40장",
+    "link": "bible/genesis/2026-03-04.html"
+  },
+  {
+    "date": "2026-03-05",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 41장",
+    "link": "bible/genesis/2026-03-05.html"
+  },
+  {
+    "date": "2026-03-06",
+    "title": "라온동행교회 가정예배서",
+    "scripture": "창세기 42장",
+    "link": "bible/genesis/2026-03-06.html"
+  },
+  {
     "date": "2026-03-09",
     "title": "라온동행교회 가정예배서",
     "scripture": "창세기 43장",
     "link": "bible/genesis/2026-03-09.html"
-  },
-  {
-    "date": "2026-03-10",
-    "title": "라온동행교회 가정예배서",
-    "scripture": "창세기 44장",
-    "link": "bible/genesis/2026-03-10.html"
-  },
-  {
-    "date": "2026-03-11",
-    "title": "라온동행교회 가정예배서",
-    "scripture": "창세기 45장",
-    "link": "bible/genesis/2026-03-11.html"
-  },
-  {
-    "date": "2026-03-12",
-    "title": "라온동행교회 가정예배서",
-    "scripture": "창세기 46장",
-    "link": "bible/genesis/2026-03-12.html"
-  },
-  {
-    "date": "2026-03-13",
-    "title": "라온동행교회 가정예배서",
-    "scripture": "창세기 47장",
-    "link": "bible/genesis/2026-03-13.html"
   }
 ];
