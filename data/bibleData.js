@@ -109,6 +109,36 @@ window.BIBLE_DATA = [
     "link": "bible/exodus/2026-04-10.html"
   },
   {
+    "date": "2026-04-13",
+    "title": "2026-04-13",
+    "scripture": "출애굽기 18장",
+    "link": "bible/exodus/2026-04-13.html"
+  },
+  {
+    "date": "2026-04-14",
+    "title": "2026-04-14",
+    "scripture": "출애굽기 19장",
+    "link": "bible/exodus/2026-04-14.html"
+  },
+  {
+    "date": "2026-04-15",
+    "title": "2026-04-15",
+    "scripture": "출애굽기 20장",
+    "link": "bible/exodus/2026-04-15.html"
+  },
+  {
+    "date": "2026-04-16",
+    "title": "2026-04-16",
+    "scripture": "출애굽기 21장",
+    "link": "bible/exodus/2026-04-16.html"
+  },
+  {
+    "date": "2026-04-17",
+    "title": "2026-04-17",
+    "scripture": "출애굽기 22장",
+    "link": "bible/exodus/2026-04-17.html"
+  },
+  {
     "date": "2026-01-02",
     "title": "천지창조의 시작",
     "scripture": "창세기 1장",
